@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Todo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .task {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📝 My Todo List</h1>
+
+    {% for task in tasks %}
+
+        <div class="task">
+
+            <h2 class="{% if task.completed %}completed{% endif %}">
+                {{ task.title }}
+            </h2>
+
+            <p>{{ task.description }}</p>
+
+            {% if task.completed %}
+                <p>✅ Completed</p>
+            {% else %}
+                <p>⏳ Not completed</p>
+            {% endif %}
+
+        </div>
+
+    {% empty %}
+
+        <p>No tasks yet.</p>
+
+    {% endfor %}
+
+</body>
+</html>
