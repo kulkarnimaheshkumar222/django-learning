@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ task.title }}</title>
+</head>
+
+<body>
+
+    <h1>{{ task.title }}</h1>
+
+    <p>{{ task.description }}</p>
+
+    {% if task.completed %}
+        <p>✅ Completed</p>
+    {% else %}
+        <p>⏳ Not completed</p>
+    {% endif %}
+
+ <a href="/task/{{ task.id }}/edit/">Edit</a>
+
+<form method="POST" action="/task/{{ task.id }}/delete/">
+
+    {% csrf_token %}
+
+    <button type="submit">Delete</button>
+
+</form>
+
+<br>
+
+<a href="/">← Back to Todo List</a>
+
+</body>
+</html>

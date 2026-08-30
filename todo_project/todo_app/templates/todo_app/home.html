@@ -31,14 +31,16 @@
 <body>
 
     <h1>📝 My Todo List</h1>
+    <a href="/add/">+ Add Todo</a>
+    
 
     {% for task in tasks %}
 
         <div class="task">
 
             <h2 class="{% if task.completed %}completed{% endif %}">
-                {{ task.title }}
-            </h2>
+    <a href="/task/{{ task.id }}/">{{ task.title }}</a>
+</h2>
 
             <p>{{ task.description }}</p>
 

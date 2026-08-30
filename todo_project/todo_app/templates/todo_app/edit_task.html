@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Todo</title>
+</head>
+
+<body>
+
+    <h1>Edit Todo</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Title</label>
+        <br>
+
+        <input
+            type="text"
+            name="title"
+            value="{{ task.title }}"
+        >
+
+        <br><br>
+
+        <label>Description</label>
+        <br>
+
+        <textarea name="description">{{ task.description }}</textarea>
+
+        <br><br>
+
+        <button type="submit">Update Todo</button>
+
+    </form>
+
+    <br>
+
+    <a href="/task/{{ task.id }}/">Cancel</a>
+
+</body>
+</html>
