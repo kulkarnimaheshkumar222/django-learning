@@ -57,3 +57,12 @@ def delete_task(request, id):
         return redirect("/")
 
     return redirect(f"/task/{task.id}/")
+
+def toggle_task(request, id):
+    task = Task.objects.get(id=id)
+
+    if request.method == "POST":
+        task.completed = not task.completed
+        task.save()
+
+    return redirect(f"/task/{task.id}/")

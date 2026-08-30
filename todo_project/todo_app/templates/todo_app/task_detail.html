@@ -16,6 +16,20 @@
         <p>⏳ Not completed</p>
     {% endif %}
 
+    <form method="POST" action="/task/{{ task.id }}/toggle/">
+
+    {% csrf_token %}
+
+    {% if task.completed %}
+        <button type="submit">Mark Incomplete</button>
+    {% else %}
+        <button type="submit">Mark Complete</button>
+    {% endif %}
+
+</form>
+
+<br>
+
  <a href="/task/{{ task.id }}/edit/">Edit</a>
 
 <form method="POST" action="/task/{{ task.id }}/delete/">

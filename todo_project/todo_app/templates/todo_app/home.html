@@ -9,38 +9,65 @@
             max-width: 700px;
             margin: 40px auto;
             padding: 0 20px;
+            background: #f5f5f5;
         }
 
         h1 {
             text-align: center;
         }
 
+        .add-button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 16px;
+            background: #222;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
         .task {
-            border: 1px solid #ddd;
-            padding: 15px;
+            background: white;
+            padding: 20px;
             margin: 15px 0;
             border-radius: 8px;
         }
 
+        .task h2 {
+            margin-top: 0;
+        }
+
         .completed {
             text-decoration: line-through;
+        }
+
+        .actions {
+            margin-top: 15px;
+        }
+
+        .actions a,
+        .actions button {
+            margin-right: 8px;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>📝 My Todo List</h1>
-    <a href="/add/">+ Add Todo</a>
-    
+    <h1>📝 My Todo</h1>
+
+    <a class="add-button" href="/add/">
+        + Add Todo
+    </a>
 
     {% for task in tasks %}
 
         <div class="task">
 
             <h2 class="{% if task.completed %}completed{% endif %}">
-    <a href="/task/{{ task.id }}/">{{ task.title }}</a>
-</h2>
+                {{ task.title }}
+            </h2>
 
             <p>{{ task.description }}</p>
 
@@ -50,11 +77,23 @@
                 <p>⏳ Not completed</p>
             {% endif %}
 
+            <div class="actions">
+
+                <a href="/task/{{ task.id }}/">
+                    View
+                </a>
+
+                <a href="/task/{{ task.id }}/edit/">
+                    Edit
+                </a>
+
+            </div>
+
         </div>
 
     {% empty %}
 
-        <p>No tasks yet.</p>
+        <p>No todos yet. Add your first todo!</p>
 
     {% endfor %}
 
